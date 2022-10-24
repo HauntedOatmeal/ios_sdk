@@ -96,20 +96,18 @@ There are two ways you can make the migration script work on Ubuntu.
 ## Option 1 - Download sw_vers.sh
 Download sw_vers.sh from this Git repo and flag it as an executable
 ```
-wget https://raw.githubusercontent.com/HauntedOatmeal/ios_sdk/main/sw_vers.sh -P ~/
-chmod +x ~/sw_vers.sh
+wget https://raw.githubusercontent.com/HauntedOatmeal/ios_sdk/main/sw_vers.sh
+chmod +x ./sw_vers.sh
 ```
-
-Next modify the iOS Builder Mac migration cmd file (```MigrationAsssistant/Migration assistant (step 1, Mac).command```)
-
-You can find this in your iOS Builder install directory.
-
-Add the following two lines right below ```#!/bin/bash```
+Now copy it to your ```/usr/bin``` folder
 ```
-shopt -s expand_aliases
-alias sw_vers='~/sw_vers.sh'
+sudo cp sw_vers.sh /usr/bin/sw_vers
 ```
-Now if you ever need to update your product/build versions, you can just modify ```sw_vers.sh``` and change the ```PROD_VER``` and ```BUILD_VER``` variables, without having to touch the migration script.
+You can check it worked with the following command. It should output 12.6
+```
+sw_vers -productVersion
+```
+Now if you ever need to update your product/build versions, you can just modify ```/usr/bin/sw_vers``` and change the ```PROD_VER``` and ```BUILD_VER``` variables, without having to touch the migration script.
 ## Option 2 - Hard code the values
 Open ```MigrationAsssistant/Migration assistant (step 1, Mac).command```
 Find the following two lines:
