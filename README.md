@@ -92,15 +92,29 @@ pbzx -n Content | cpio -i
 ```
 
 # Migration Script
-Download the migrate.sh script in this repo. This is just the iOS Builder migration script for the Mac, modified slightly to run on Ubuntu.
+There are two ways you can make the migration script work on Ubuntu.
+## Option 1 - Download sw_vers.sh
 
-Change line 118 and 119 to be the correct product and build versions for your Mac (or whatever is latest)
-For example, update the following values in echo
+Next modify the iOS Builder Mac migration cmd file (```MigrationAsssistant/Migration assistant (step 1, Mac).command```)
+
+Add the following two lines right below ```#!/bin/bash```
+```
+shopt -s expand_aliases
+alias sw_vers='~/src/xcode/sw_vers.sh'
+```
+## Option 2 - Hard code the values
+Open ```MigrationAsssistant/Migration assistant (step 1, Mac).command```
+Find the following two lines:
+```
+sw_vers -productVersion > osx-version
+sw_vers -buildVersion   > osx-build
+```
+and change them to look like this
 ```
 echo '12.6' > osx-version
 echo '21G115' > osx-build
 ```
-
+You can change these values to be the correct product and build versions for your Mac (or whatever is latest)
 These values can be found by running the following commands on a Mac device
 ```
 sw_vers -productVersion
