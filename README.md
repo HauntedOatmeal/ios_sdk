@@ -4,8 +4,6 @@ These are instructions for generating the iOS SDK files needed for iOS Builder f
 
 By running these commands in a Windows Subsystem for Linux (WSL) Ubuntu container, and by using iOS Builder, you can build iOS apps entirely on Windows. You may still need to generate signing certs and provisioning profiles on a Mac, but there are ways to do that on Windows as well. That is beyond the scope of this repo however.
 
-The main purpose of this guide is to be able to update your iOS SDK without having to spend ages updating XCode on your Mac
-
 # Ubuntu
 Install Ubuntu for Windows 10/11 WSL
 ```
