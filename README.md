@@ -23,7 +23,7 @@ tar -xf xar-1.6.1.tar.gz
 
 Install the dependencies and build Xar
 ```
-sudo apt-get install gcc make libxml2-dev libz-dev 
+sudo apt-get install gcc make libxml2-dev libz-dev zip
 sudo apt-get install libssl1.0-dev
 ./configure
 make
@@ -94,13 +94,20 @@ pbzx -n Content | cpio -i
 # Migration Script
 There are two ways you can make the migration script work on Ubuntu.
 ## Option 1 - Download sw_vers.sh
+Download sw_vers.sh from this Git repo and flag it as an executable
+```
+wget https://raw.githubusercontent.com/HauntedOatmeal/ios_sdk/main/sw_vers.sh -P ~/
+chmod +x ~/sw_vers.sh
+```
 
 Next modify the iOS Builder Mac migration cmd file (```MigrationAsssistant/Migration assistant (step 1, Mac).command```)
+
+You can find this in your iOS Builder install directory.
 
 Add the following two lines right below ```#!/bin/bash```
 ```
 shopt -s expand_aliases
-alias sw_vers='~/src/xcode/sw_vers.sh'
+alias sw_vers='~/sw_vers.sh'
 ```
 ## Option 2 - Hard code the values
 Open ```MigrationAsssistant/Migration assistant (step 1, Mac).command```
@@ -130,14 +137,19 @@ In this case ```~/src/xcode``` is just where I extracted the XCode .xip file to
 sudo ln -s /Applications/Xcode.app ~/src/xcode/Xcode.app
 ```
 
-Now run the migration script (and install ```zip``` in case it is missing)
+Now copy the migration script to Ubuntu, easiest method is to use explorer.
 ```
-sudo apt install zip
+explorer.exe .
+```
+which will let you copy the file directly via Windows Explorer.
+
+Rename the script to ```migrate.sh``` and then run it via:
+```
 sudo chmod +x ./migrate.sh 
 ./migrate.sh 
 ```
 
-Finally you can run ```explorer.exe``` inside your Ubuntu terminal to navigate to that Ubuntu folder via Windows Explorer (which is super neat!)
+Finally you can run ```explorer.exe``` inside your Ubuntu terminal to navigate to that Ubuntu folder via Windows Explorer
 ```
 explorer.exe .
 ```
