@@ -107,7 +107,15 @@ You can check it worked with the following command. It should output 12.6
 ```
 sw_vers -productVersion
 ```
-Now if you ever need to update your product/build versions, you can just modify ```/usr/bin/sw_vers``` and change the ```PROD_VER``` and ```BUILD_VER``` variables, without having to touch the migration script.
+Now if you ever need to update your product/build versions, you can just modify ```/usr/bin/sw_vers``` and change the ```PROD_VER``` and ```BUILD_VER``` variables, without having to touch the migration script. 
+
+Alternatively, you can also just set the ```IOS_PROD_VER``` and ```IOS_BUILD_VER``` environment variables
+```
+export IOS_PROD_VER=13.0
+sw_vers -productVersion
+```
+will now report 13.0 instead of 12.6
+
 ## Option 2 - Hard code the values
 Open ```MigrationAsssistant/Migration assistant (step 1, Mac).command```
 Find the following two lines:
