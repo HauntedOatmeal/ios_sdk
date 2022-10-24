@@ -109,7 +109,7 @@ Add the following two lines right below ```#!/bin/bash```
 shopt -s expand_aliases
 alias sw_vers='~/sw_vers.sh'
 ```
-Now if you ever need to update your product/build versions, you can just modify sw_vers.sh and change the PROD_VER and BUILD_VER variables, without having to touch the migration script.
+Now if you ever need to update your product/build versions, you can just modify ```sw_vers.sh``` and change the ```PROD_VER``` and ```BUILD_VER``` variables, without having to touch the migration script.
 ## Option 2 - Hard code the values
 Open ```MigrationAsssistant/Migration assistant (step 1, Mac).command```
 Find the following two lines:
