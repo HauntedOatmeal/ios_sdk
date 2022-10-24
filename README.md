@@ -51,6 +51,10 @@ Download Git repo and change to the directory (cd pbzx)
 
 https://github.com/nrosenstein-stuff/pbzx
 
+```
+git clone https://github.com/nrosenstein-stuff/pbzx.git
+cd pbzx
+```
 
 ## Setup Brew
 
